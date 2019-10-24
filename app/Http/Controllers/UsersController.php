@@ -16,16 +16,11 @@ class UsersController extends Controller
     {
        // $users = User::where('role_id', '!=','0');
         //$users = User::all();
-        $users = User::where('role_id','!=',)
-        return  $users;
-        return view('users.index');
+
+        return view('users.userlist');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //

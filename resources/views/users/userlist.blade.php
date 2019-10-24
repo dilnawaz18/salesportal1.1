@@ -42,8 +42,8 @@
                     <div class="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="/home">
-                                    <span>Dashboard</span>
+                                <a href="#">
+                                    <span>User List</span>
                                 </a>
                             </li>
 
@@ -58,7 +58,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/users">List Users</a>
+                                            <a href="#">List Users</a>
                                         </li>
                                     </ul>
                                 </div>
