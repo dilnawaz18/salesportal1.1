@@ -107,8 +107,12 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
+
         $customer=Customer::find($id);
+
+       // if(auth()->user()->id ==$customer->user_id)
+        //    return redirect('customers')->with('error','Unauthorized Page');
         $customer->delete();
-        return redirect('/customers')->with('success','Post Deleted');
+        return redirect('/home')->with('success','Post Deleted');
     }
 }
