@@ -13,91 +13,49 @@
             <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
                 <i class="fas fa-bars"></i>
             </a>
-            <nav id="sidebar" class="sidebar-wrapper">
-                <div class="sidebar-content">
-                    <div class="sidebar-brand">
-                        <a href="#">pro sidebar</a>
-                        <div id="close-sidebar">
-                            <i class="fas fa-times"></i>
-                        </div>
-                    </div>
-                    <div class="sidebar-header">
-                        <div class="user-pic">
-                            <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-                                 alt="User picture">
-                        </div>
-                        <div class="user-info">
-          <span class="user-name">Jhon
-            <strong>Smith</strong>
-          </span>
-                            <span class="user-role">Administrator</span>
-                            <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
-          </span>
-                        </div>
-                    </div>
-
-                    <!-- sidebar-search  -->
-                    <div class="sidebar-menu">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <span>User List</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-dropdown">
-                                <a href="#">
-                                    <span>Users</span>
-                                </a>
-                                <div class="sidebar-submenu">
-                                    <ul>
-                                        <li>
-                                            <a href="#">Create User
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">List Users</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-
-
-
-                        </ul>
-                    </div>
-                    <!-- sidebar-menu  -->
-                </div>
-                <!-- sidebar-content  -->
-                {{--                <div class="sidebar-footer">--}}
-                {{--                    <a href="#">--}}
-                {{--                        <i class="fa fa-bell"></i>--}}
-                {{--                        <span class="badge badge-pill badge-warning notification">3</span>--}}
-                {{--                    </a>--}}
-                {{--                    <a href="#">--}}
-                {{--                        <i class="fa fa-envelope"></i>--}}
-                {{--                        <span class="badge badge-pill badge-success notification">7</span>--}}
-                {{--                    </a>--}}
-                {{--                    <a href="#">--}}
-                {{--                        <i class="fa fa-cog"></i>--}}
-                {{--                        <span class="badge-sonar"></span>--}}
-                {{--                    </a>--}}
-                {{--                    <a href="#">--}}
-                {{--                        <i class="fa fa-power-off"></i>--}}
-                {{--                    </a>--}}
-                {{--                </div>--}}
-            </nav>
-            <!-- sidebar-wrapper  -->
+        @include('layouts/sidebar')
+        <!-- sidebar-wrapper  -->
             <main class="page-content">
                 <div class="container-fluid">
-                    <h2>Dashboard</h2>
+                    <h2>Users List</h2>
                     <hr>
-                    <div class="row">
+                   <div style="text-align: right;margin: 20px">
+                       <a href="/users/create" class="btn btn-primary">Add User</a>
 
-                    </div>
+                   </div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                       @foreach($users as $user)
+                           <tr>
+                               <th scope="row">{{$user->name}}</th>
+                               <td>{{$user->email}}</td>
+                               @if($user->role_id == 1 )
+                                   <td> Guest</td>
+                                   @elseif($user->role_id == 2)
+                                    <td> Guest</td>
+                               @endif
+                               @if($user->status == 1)
+                                   <td><span class="badge badge-success">Active</span></td>
+                               @elseif($user->status == 0)
+                                    <td><span class="badge badge-danger">Deactive</span></td>
+                               @endif
+                               <td><a href="/users/{{$user->id}}/edit/" class="btn btn-success">Edit</a></td>
+                           </tr>
+                       @endforeach
+
+
+                        </tbody>
+                    </table>
 
                 </div>
 
