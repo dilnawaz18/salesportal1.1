@@ -19,9 +19,32 @@
                 <div class="container-fluid">
                     <h2>Dashboard</h2>
                     <hr>
-                    <div class="row">
+                    <table class="table table-striped">
+                           <tr>
+                               <td> Name</td>
+                               <td>Location</td>
+                               <td>Industry</td>
+                               <td>Edit</td>
+                               <td>Delete</td>
 
-                    </div>
+                           </tr>
+                           @foreach($customers as $customer)
+                               <tr>
+                                   <td> {{$customer->name}}</td>
+                               <td>{{$customer->location->name}}</td>
+                               <td>{{$customer->industry->name}}</td>
+                                   <td><a href="customers/{{$customer->id}}/edit" class="btn btn-primary ">Edit</a> </td>
+
+                                   <td>
+                                       {!!Form::open(['action'=>['CustomersController@destroy', $customer->id],'method'=>'POST','class'=>'btn btn-primary,pull-right'])!!}
+                                       {{Form::hidden('_method','DELETE')}}
+                                       {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
+                                       {!! Form::close() !!}
+
+                                   </td>
+                               </tr>
+                           @endforeach
+                       </table>
 
                 </div>
 
