@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
-use App\Mail\Welcome;
-
-class UsersController extends Controller
+use App\Role;
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +13,17 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id','!=',0)->get();
-
-       // return $users->role();
-        return view('users.userlist')->with('users',$users);
+        return 'role';
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('users.createuser');
+
     }
 
     /**
@@ -36,18 +34,15 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->role_id = $request->input('role');
-        $user->status = $request->input('status');
-        $user->save();
 
-//        \Mail::to($user)->send(new Welcome);
+       // return $request->input('name');
+        $role = new Role();
+        $role->name = $request->input('name');
+        //return $role;
+        $role->save();
+        return 'success';
 
-        return redirect('users');
-      //  return  $user;
-
+       // return $request->getContent();
     }
 
     /**
@@ -58,7 +53,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return 'show';
+        //
     }
 
     /**
@@ -69,8 +64,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user =User::find($id);
-        return view('users.edituser')->with('user',$user);
+        //
     }
 
     /**
@@ -82,13 +76,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->role_id = $request->input('role');
-        $user->status = $request->input('status');
-        $user->save();
-        return redirect('users');
+        //
     }
 
     /**
@@ -99,6 +87,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        return 'distroy';
+        //
     }
 }
