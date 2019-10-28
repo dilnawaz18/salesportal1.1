@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use App\Role;
-class RoleController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -88,5 +89,24 @@ class RoleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function attach_permission(Request $request){
+       //$role = Role::find($request->input('role_id'));
+        $content = $request->getContent();
+        $x = json_decode($content,true);
+        $role = Role::find($x['role_id']);
+       $role->permissions()->attach($x['permission_id']);
+        //return  $role->permissions->first()->name;
+        return $role;
+
+
+    }
+    public function detach_permission(Request $request){
+        $content = $request->getContent();
+        $x = json_decode($content,true);
+        $role = Role::find($x['role_id']);
+        $role->permissions()->detach($x['permission_id']);
+        return 'succesfully detach';
     }
 }

@@ -16,5 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('/roles','RoleController');
+Route::post('/roles/attach/','RolesController@attach_permission');
+Route::post('/roles/detach/','RolesController@detach_permission');
+
+Route::resource('/roles','RolesController');
+//Route::get('/roles/attach_role','RolesController@attach_role');
 

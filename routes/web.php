@@ -20,5 +20,6 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('/customers','CustomersController');
-    Route::resource('/users','UsersController');
+    //Route::resource('/users','UsersController');
+
 });
