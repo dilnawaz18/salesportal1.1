@@ -14,10 +14,25 @@ class CustomersController extends Controller
     public function index()
     {
         $customers=Customer::all();
-
+        $formatted = [];    
+        foreach($customers as $customer){
+          
+            array_push($formatted,[
+                'id' => $customer->id,
+                'name' => $customer->name,
+                'img_url' => $customer->img_url,
+                'web_url' =>$customer->web_url,
+                'location' => $customer->location->name,
+                'industry_type' => $customer->industry->name,
+                
+            ]);
+            
+        }
+        return $formatted;
+       
        // return Customer::all();
-        $customers=Customer::orderBy('created_at','desc')->paginate(3);
-        return view('customers.index')->with('customers',$customers);
+        // $customers=Customer::orderBy('created_at','desc')->paginate(3);
+        // return view('customers.index')->with('customers',$customers);
     }
 
     /**
@@ -74,7 +89,18 @@ class CustomersController extends Controller
     {
         //
         $customer= Customer::find($id);
-        return view('customers.edit')->with('customer',$customer);
+      
+        $formatted = [
+            'id' => $customer->id,
+        'name' => $customer->name,
+        'img_url' => $customer->img_url,
+        'web_url' =>$customer->web_url,
+        'location' => $customer->location->name,
+        'industry_type' => $customer->industry->name,
+   ];
+    
+        return json_encode( $formatted);
+        // return view('customers.edit')->with('customer',$customer);
     }
 
     /**
