@@ -13,19 +13,8 @@ class LocationsTableSeeder extends Seeder
     {
         //
         DB::table('locations')->truncate();
-        DB::table('locations')->insert([
+        factory(App\Location::class,30)->create();
 
-
-            [
-                'name' => 'Abu Dhabi',
-                'created_at'=>now(),
-                'updated_at'=>now()
-            ],
-            [
-                'name' => 'Dubai',
-                'created_at'=>now(),
-                'updated_at'=>now()
-            ]
-        ]);
+     
     }
 }

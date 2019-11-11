@@ -12,13 +12,17 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+ use App\Http\Controllers\api\CustomerController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/roles/attach/','RolesController@attach_permission');
-Route::post('/roles/detach/','RolesController@detach_permission');
 
-Route::resource('/roles','RolesController');
-//Route::get('/roles/attach_role','RolesController@attach_role');
+Route::resource('/customers','CustomersController');
+//Route::resource('/users','UsersController');
+
+// Route::post('/roles/attach/','RolesController@attach_permission');
+// Route::post('/roles/detach/','RolesController@detach_permission');
+
+// Route::resource('/roles','RolesController');
+// //Route::get('/roles/attach_role','RolesController@attach_role');
 
