@@ -24,7 +24,8 @@ class CustomersTableSeeder extends Seeder
                 'img_url' => $faker->imageUrl($width = 200, $height = 200),
                 'web_url' =>$faker->url,
                 'location_id' =>$faker->numberBetween($min = 1, $max = 5),
-                'industry_id' =>$faker->numberBetween($min = 1, $max = 5)
+                'industry_id' =>$faker->numberBetween($min = 1, $max = 5),
+                'is_updated' => $faker->boolean($chanceOfGettingTrue = 20 )
             ]);
         }
     }
