@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+
+
+use App\Screenshot;
 class CustomersController extends Controller
 {
     /**
@@ -44,7 +47,9 @@ class CustomersController extends Controller
         //return  "abc";
         $customer=new Customer();
         $customer->name=$request->input('name');
-        $customer->web_url=$request->input('web_url');
+        $web_url=$request->input('web_url');
+        $customer->web_url=$web_url;
+        //
         $customer->img_url="Abc";
         $customer->save();
         return redirect('/customers')->with('success','Post Created');
