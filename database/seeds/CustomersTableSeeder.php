@@ -18,15 +18,15 @@ class CustomersTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         // And now, let's create a few articles in our database:
-        for ($i = 0; $i < 50; $i++) {
-            Customer::create([
-                'name' => $faker->name,
-                'img_url' => $faker->imageUrl($width = 200, $height = 200),
-                'web_url' =>$faker->url,
-                'location_id' =>$faker->numberBetween($min = 1, $max = 5),
-                'industry_id' =>$faker->numberBetween($min = 1, $max = 5),
-                'is_updated' => $faker->boolean($chanceOfGettingTrue = 20 )
-            ]);
-        }
+        // for ($i = 0; $i < 50; $i++) {
+        //     Customer::create([
+        //         'name' => $faker->name,
+        //         'img_url' => $faker->imageUrl($width = 200, $height = 200),
+        //         'web_url' =>$faker->url,
+        //         'location_id' =>$faker->numberBetween($min = 1, $max = 5),
+        //         'industry_id' =>$faker->numberBetween($min = 1, $max = 5),
+        //         'is_updated' => $faker->boolean($chanceOfGettingTrue = 20 )
+        //     ]);
+        // }
     }
 }

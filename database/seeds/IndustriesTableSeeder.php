@@ -13,7 +13,7 @@ class IndustriesTableSeeder extends Seeder
     {
         // DB::table('industries')->delete();
         DB::table('industries')->truncate();
-        factory(App\Industry::class,10)->create();
+        //factory(App\Industry::class,10)->create();
         
         // DB::table('industries')->insert([
 
