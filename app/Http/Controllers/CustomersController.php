@@ -16,15 +16,15 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $customers=Customer::all();
+        $customers=Customer::with(['location', 'industry'])->get();
         $formatted = [];    
         foreach($customers as $customer){
           
             array_push($formatted,[
                 'id' => $customer->id,
                 'name' => $customer->name,
-                'img_url' => $customer->img_url,
-                'web_url' =>$customer->web_url,
+                'img_url' => asset($customer->img_url),
+                'web_url' => $customer->web_url,
                 'location' => $customer->location->name,
                 'industry_type' => $customer->industry->name,
                 

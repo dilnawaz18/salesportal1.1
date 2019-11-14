@@ -13,7 +13,8 @@ class LocationsTableSeeder extends Seeder
     {
         //
         DB::table('locations')->truncate();
-        factory(App\Location::class,30)->create();
+        //factory(App\Location::class,30)->create();
+        //factory(App\Location::class,30)->create();
 
      
     }
