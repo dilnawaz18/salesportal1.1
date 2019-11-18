@@ -41,66 +41,10 @@ Route::get('/screenshotbs/{customer_id}', function (Request $request, $customer_
  });
 
 Route::get('/check', function () {
-    $str = 'Not launched yet';
-   return preg_match('/\bLaunched\b/i',$str);
-    //return view ('welcome');
-
-});
-
-// Route::get('/screenshot/{customer_id}/{img_url}', function ($customer_id, $img_url) {
-//    $path=  Screenshot::get_Screenshot($customer_id,$img_url);
-// echo $path;
-//
-//    return view ('welcome')->with('path',$path);
-
-// });
-
-
-
-
-// function getIndustryId($industries,$industry){
-
-//     if( isset($industries[$industry])) return $i/ndustries[$industry];
-//     return; 
-// }
-// function getLocationId($locations,$location){
-
-//     if( isset($locations[$location])) return $locations[$location];
-//     return; 
-// }
-// function isWebUrlUpdated($customerFromDB,$web_url_from_sheet){
-
-//    // $customerFromDB =$customers[$customer[$header['Client Name']]];
-//    // $webUrlFromDB =  $customerFromDB['web_url'];
-//     //$webUrlFromSheet =  $customer[$header['BCC URL']];
     
-//     if($customerFromDB['is_updated']) return;
-//      if(strcasecmp($customerFromDB['web_url'],$web_url_from_sheet)){
-
-            
-
-//     }
-    
-// }
-// function updateCustomer($customerFromDB,$customerFromSheet){
 
 
-//     if(isset($customers[$customer[$header['Client Name']]])){
-//         // echo 'customer exits';
-//         // echo '<br>';
-
-//         //validate if web url change
-//         //if(($customers[$customer[$header['Client Name']]]))
-        
-//     }else{
-//         echo 'customer not exits';
-//         echo '<br>';
-
-
-//     }
-
-
-// }
+ });
 
 
 Route::get('/', function () {

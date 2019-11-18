@@ -14,7 +14,7 @@ class AddIsUpdatedToCustomers extends Migration
     public function up()
     {
         Schema::table('customers', function (Blueprint $table) {
-            $table->boolean('is_updated');
+            $table->boolean('is_updated')->default(0);
         });
     }
 
