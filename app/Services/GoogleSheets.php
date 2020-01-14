@@ -10,7 +10,7 @@ class GoogleSheets {
     $client = self::getClient();
     $service = new \Google_Service_Sheets($client);
     $spreadsheetId = '1QA1Dy_c4vwTBeUwl3P3s-tCo_bgO8RBVDbHDW982mfM';
-    $range = 'Paid BCC clients!A:J';
+    $range = 'Paid BCC Clients - 2019!A:J';
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $values = $response->getValues();
 

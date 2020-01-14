@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,11 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('/customers','CustomersController');
-//Route::resource('/users','UsersController');
-
-// Route::post('/roles/attach/','RolesController@attach_permission');
-// Route::post('/roles/detach/','RolesController@detach_permission');
-
-// Route::resource('/roles','RolesController');
-// //Route::get('/roles/attach_role','RolesController@attach_role');
-
+Route::post('updatefile/{id}','CustomersController@updateFile');
+Route::post('/login', 'LoginController@login');

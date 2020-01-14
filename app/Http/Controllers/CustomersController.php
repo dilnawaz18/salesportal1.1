@@ -17,6 +17,49 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function updateFile(Request $request, $id){
+        // return 'abv';
+        $data = $request->all();
+       // dd($data);
+        
+        //return $data;
+        //return $request->input('location');
+        $customer= Customer::find($id);
+        //$location =Location::where('name',)
+        $customer->name = $request->input('name');
+      //  dd( $customer->name);
+
+        $file = $request->file('image');
+        $ext = $file->extension();
+        $name = $file->getClientOriginalName();
+        //dd($name);
+       
+        $img_url =$request->input('name').'.'.$ext;
+
+        $customer->web_url=$request->input('web_url');
+        $customer->location_id = 1;
+        $customer->industry_id = 1;
+       
+
+        $path = Storage::disk('public')->putFileAs('storage',$file, $name);
+        
+        
+         $customer->save();
+       
+        //
+        $this->validate($request,[
+            'name'=>'required'
+        ]);
+        //return  "abc";1
+        $customer=Customer::find($id);
+        $customer->name=$request->input('name');
+        $customer->web_url=$request->input('web_url');
+        $customer->img_url=$path;
+        $customer->save();
+        return 'done';
+
+
+    }
     public function index()
     {
         $customers=Customer::with(['location', 'industry'])->get();
@@ -183,11 +226,14 @@ class CustomersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
+       // return 'abc';
         
         $data = $request->all();
-        return $data;
-        return $request->input('location');
+        dd($data);
+        
+        //return $data;
+        //return $request->input('location');
         $customer= Customer::find($id);
         //$location =Location::where('name',)
         $customer->name = $request->input('name');
@@ -218,7 +264,8 @@ class CustomersController extends Controller
         $customer->web_url=$request->input('web_url');
         $customer->img_url="Abc";
         $customer->save();
-        return redirect('/customers')->with('success','Post Updated');
+        return 'done';
+        //return redirect('/customers')->with('success','Post Updated');
     }
 
     /**
