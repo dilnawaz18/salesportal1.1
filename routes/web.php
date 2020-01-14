@@ -1,6 +1,8 @@
 <?php
 
 use App\Services\GoogleSheets;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth ;
 // use Sheets;
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +44,6 @@ Route::get('/screenshotbs/{customer_id}', function (Request $request, $customer_
 
 Route::get('/check', function () {
     
-
-
  });
 
 
@@ -248,8 +248,6 @@ Route::get('test', function () {
     dd($locations);
 });
 
-
-Auth::routes();
 
 Route::middleware('auth')->group(function () {
 

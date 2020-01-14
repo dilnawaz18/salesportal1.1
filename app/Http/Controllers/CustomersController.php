@@ -245,8 +245,7 @@ class CustomersController extends Controller
         $data = [
              'locations' =>$locations,
             'inudstires' => $industries
-            ]
-
+        ];
 
     }
 }
